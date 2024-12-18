@@ -1,0 +1,19 @@
+.page-heading {
+  text-align: center;
+  margin: 2rem 0;
+  position: relative;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.page-heading::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 0.125rem;
+  background-color: #555;
+  position: absolute;
+  left: 50%;
+  bottom: -0.625rem;
+  transform: translateX(-50%);
+}

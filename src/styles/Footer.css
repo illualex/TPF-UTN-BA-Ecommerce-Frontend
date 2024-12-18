@@ -1,0 +1,225 @@
+.footer h2 {
+  margin: 0.625rem 0;
+}
+
+.footer {
+  background-color: #03071e;
+  color: #fff;
+  padding: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 0.3125rem solid transparent;
+  border-image: linear-gradient(
+      to right,
+      red,
+      orange,
+      yellow,
+      green,
+      blue,
+      indigo,
+      violet
+    )
+    1;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 0.625rem;
+}
+
+.footer-section.left {
+  text-align: left;
+}
+
+.footer-section.left ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer-section.left li {
+  margin-bottom: 0.625rem;
+}
+
+.footer-section.left a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-section.left a:hover {
+  text-decoration: underline;
+}
+
+.footer-section.middle {
+  text-align: center;
+}
+
+.footer-section.middle .logo-img {
+  max-width: 10rem;
+  margin-bottom: 0.625rem;
+}
+
+.footer-section.middle p {
+  margin-top: 0.625rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.footer-section.right {
+  text-align: right;
+}
+
+.footer-section.right form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.input-gmail {
+  margin-bottom: 0.625rem;
+  padding: 0.75rem;
+  border: 0.0625rem solid #ddd;
+  border-radius: 1.875rem;
+  width: 100%;
+  max-width: 18.75rem;
+  box-sizing: border-box;
+}
+
+.btn-subscribe {
+  background-color: #fff;
+  color: #000;
+  border: 0.125rem solid black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1.875rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.btn-subscribe:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: white;
+}
+
+.social-media {
+  margin-top: 0.625rem;
+}
+
+.social-media a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 0.625rem;
+}
+
+.social-media a:hover {
+  text-decoration: underline;
+}
+
+/* MEDIA QUERY */
+/* Móviles: max 425px */
+@media (max-width: 425px) {
+  .footer h2 {
+    font-size: 1.25rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-section.left {
+    text-align: center;
+  }
+
+  .footer-section.right form {
+    align-items: center;
+  }
+}
+
+/* Tablets: 426px a 768px */
+@media (min-width: 426px) and (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-section.left,
+  .footer-section.right {
+    text-align: center;
+  }
+}
+
+/* Laptops: 769px a 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-section {
+    width: auto;
+    text-align: left;
+  }
+
+  .footer-section.middle {
+    text-align: center;
+  }
+}
+
+/* Pantallas Grandes: 1025px a 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-section {
+    width: auto;
+  }
+
+  .footer-section.middle {
+    text-align: center;
+  }
+}
+
+/* Pantallas Ultra Grandes: 1441px en adelante */
+@media (min-width: 1441px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-section {
+    width: auto;
+  }
+
+  .footer-section.middle {
+    text-align: center;
+  }
+}

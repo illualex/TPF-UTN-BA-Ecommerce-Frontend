@@ -1,0 +1,125 @@
+.construction-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.construction-container img {
+  width: 35%;
+}
+
+.message {
+  text-align: center;
+  padding: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+
+.message h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.message p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* MEDIA QUERY */
+/* Móviles: 0px a 425px */
+@media (max-width: 425px) {
+  .construction-container img {
+    width: 60%;
+  }
+
+  .message {
+    padding: 0.9375rem;
+  }
+
+  .message h1 {
+    font-size: 1.5rem;
+  }
+
+  .message p {
+    font-size: 0.875rem;
+  }
+}
+
+/* Tablets: 426px a 768px */
+@media (min-width: 426px) and (max-width: 768px) {
+  .construction-container img {
+    width: 50%;
+  }
+
+  .message {
+    padding: 1.25rem;
+  }
+
+  .message h1 {
+    font-size: 1.75rem;
+  }
+
+  .message p {
+    font-size: 0.9375rem;
+  }
+}
+
+/* Laptops: 769px a 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .construction-container img {
+    width: 40%;
+  }
+
+  .message {
+    padding: 1.5625rem;
+  }
+
+  .message h1 {
+    font-size: 2rem;
+  }
+
+  .message p {
+    font-size: 1rem;
+  }
+}
+
+/* Pantallas grandes: 1025px a 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .construction-container img {
+    width: 35%;
+  }
+
+  .message {
+    padding: 1.875rem;
+  }
+
+  .message h1 {
+    font-size: 2.25rem;
+  }
+
+  .message p {
+    font-size: 1.125rem;
+  }
+}
+
+/* Pantallas ultra grandes: 1441px a más */
+@media (min-width: 1441px) {
+  .construction-container img {
+    width: 30%;
+  }
+
+  .message {
+    padding: 2.1875rem;
+  }
+
+  .message h1 {
+    font-size: 2.5rem;
+  }
+
+  .message p {
+    font-size: 1.25rem;
+  }
+}

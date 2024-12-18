@@ -1,0 +1,19 @@
+.product-carousel {
+  width: 100%;
+  padding: 0.625rem 1.25rem;
+}
+
+.product-carousel .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.product-carousel .swiper-slide .product-card {
+  margin: 1rem 0;
+}
+
+.product-carousel .swiper-slide {
+  width: calc(6.25rem - 1.25rem);
+}

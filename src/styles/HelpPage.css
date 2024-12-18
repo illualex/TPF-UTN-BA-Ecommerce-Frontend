@@ -1,0 +1,90 @@
+.help-page h1 {
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.help-page li,
+.help-page p {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.help-page {
+  padding: 1rem;
+  margin: 1rem 5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MEDIA QUERY */
+/* Móviles: max 425px */
+@media (max-width: 425px) {
+  .help-page {
+    margin: 1rem;
+  }
+
+  .help-page h1 {
+    font-size: 1.5rem;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Tablets: 426px a 768px */
+@media (min-width: 426px) and (max-width: 768px) {
+  .help-page {
+    margin: 1rem 2rem;
+  }
+
+  .help-page h1 {
+    font-size: 1.75rem;
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+  }
+}
+
+/* Laptops: 769px a 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .help-page {
+    margin: 1rem 3rem;
+  }
+
+  .help-page h1 {
+    font-size: 2rem;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+}
+
+/* Pantallas Grandes: 1025px a 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .help-page {
+    margin: 1rem 4rem;
+  }
+
+  .help-page h1 {
+    font-size: 2.25rem;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+}
+
+/* Pantallas Ultra Grandes: 1441px en adelante */
+@media (min-width: 1441px) {
+  .help-page {
+    margin: 1rem 5rem;
+  }
+
+  .help-page h1 {
+    font-size: 2.5rem;
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+}

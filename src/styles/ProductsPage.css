@@ -1,0 +1,148 @@
+.products-page {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.filter-section {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.products-section {
+  width: 100%;
+}
+
+.products-list {
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.product-card {
+  flex: 1 1 100%;
+}
+
+/* MEDIA QUERY */
+/* Mobiles S: 320px */
+@media (min-width: 0px) and (max-width: 320px) {
+  .products-page {
+    flex-direction: column;
+  }
+
+  .filter-section {
+    width: 100%;
+  }
+
+  .products-section {
+    width: 100%;
+  }
+
+  .products-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .product-card {
+    flex: 1 1 100%;
+  }
+}
+
+/* Tablet: 768px */
+@media (min-width: 426px) and (max-width: 768px) {
+  .products-page {
+    flex-direction: row;
+  }
+
+  .filter-section {
+    width: 30%;
+  }
+
+  .products-section {
+    width: 70%;
+  }
+
+  .products-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-card {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
+
+/* Laptop: 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .products-page {
+    flex-direction: row;
+  }
+
+  .filter-section {
+    width: 25%;
+  }
+
+  .products-section {
+    width: 75%;
+  }
+
+  .products-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-card {
+    flex: 1 1 calc(33.333% - 1rem);
+  }
+}
+
+/* Laptop L: 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .products-page {
+    flex-direction: row;
+  }
+
+  .filter-section {
+    width: 20%;
+  }
+
+  .products-section {
+    width: 80%;
+  }
+
+  .products-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-card {
+    flex: 1 1 calc(25% - 1rem);
+  }
+}
+
+/* 4k: Mayor a 1441px */
+@media (min-width: 1441px) {
+  .products-page {
+    flex-direction: row;
+  }
+
+  .filter-section {
+    width: 20%;
+  }
+
+  .products-section {
+    width: 80%;
+  }
+
+  .products-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-card {
+    flex: 1 1 calc(20% - 1rem);
+  }
+}

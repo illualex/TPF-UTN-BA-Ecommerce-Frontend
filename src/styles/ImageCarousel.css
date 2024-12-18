@@ -1,0 +1,45 @@
+.img-banner {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.custom-swiper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.custom-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-swiper .swiper-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+
+/* Ocultar los botones del Swiper en pantallas entre 0px y 425px */
+@media (min-width: 0px) and (max-width: 425px) {
+  .custom-swiper .swiper-button-next,
+  .custom-swiper .swiper-button-prev {
+    display: none;
+  }
+}
+
+/* Mostrar los botones del Swiper en pantallas mayores a 426px */
+@media (min-width: 426px) {
+  .custom-swiper .swiper-button-next,
+  .custom-swiper .swiper-button-prev {
+    display: block;
+  }
+}

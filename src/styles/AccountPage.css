@@ -1,0 +1,74 @@
+/* src/styles/AccountPage.css */
+.account-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f4f7fa;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.account-page h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.account-details {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  color: #555;
+  font-size: 1rem;
+}
+
+.account-details p {
+  margin: 15px 0;
+}
+
+.account-details strong {
+  color: #333;
+  font-weight: 500;
+}
+
+.account-details p span {
+  font-weight: 400;
+}
+
+.account-details .email-verified {
+  color: #27ae60;
+}
+
+.account-details .not-verified {
+  color: #e74c3c;
+}
+
+.account-details p:not(:last-child) {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .account-page {
+    padding: 15px;
+  }
+
+  .account-details {
+    padding: 20px;
+  }
+
+  .account-page h1 {
+    font-size: 2rem;
+  }
+
+  .account-details p {
+    font-size: 0.95rem;
+  }
+}
