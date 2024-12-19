@@ -7,9 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
 
     if (!email) {
       toast.error("Por favor, ingresa un correo electrónico.", {
@@ -25,12 +28,11 @@ const Footer = () => {
       });
       return;
     }
+    
+    setIsSubmitting(true); // Activar estado de envío
 
     try {
-      const response = await axiosInstance.post(
-        "/api/subscriptions",
-        { email }
-      );
+      const response = await axiosInstance.post("/api/subscriptions", { email });
       toast.success("¡Te has suscrito exitosamente!", {
         position: "bottom-right",
         autoClose: 3000,
@@ -57,21 +59,20 @@ const Footer = () => {
           transition: Slide,
         });
       } else {
-        toast.error(
-          "Ocurrió un error al suscribirte. Inténtalo de nuevo más tarde.",
-          {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Slide,
-          }
-        );
+        toast.error("Ocurrió un error al suscribirte. Inténtalo de nuevo más tarde.", {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Slide,
+        });
       }
+    } finally {
+      setIsSubmitting(false); // Desactivar estado de envío
     }
   };
 
@@ -121,7 +122,7 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <button type="submit" className="btn-subscribe">
+              <button type="submit" className="btn-subscribe" disabled={isSubmitting}>
                 Suscribirse
               </button>
             </form>
