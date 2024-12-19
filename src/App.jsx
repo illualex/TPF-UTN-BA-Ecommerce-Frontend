@@ -5,7 +5,8 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -43,6 +44,7 @@ const App = () => {
         </main>
         <Footer />
       </Router>
+      <ToastContainer />
     </>
   );
 };

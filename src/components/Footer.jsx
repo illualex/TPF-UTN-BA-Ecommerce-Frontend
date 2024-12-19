@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Footer.css";
 import logo from "../assets/images/logo/titulo1.png";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -27,8 +27,8 @@ const Footer = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/subscriptions",
+      const response = await axiosInstance.post(
+        "/api/subscriptions",
         { email }
       );
       toast.success("¡Te has suscrito exitosamente!", {

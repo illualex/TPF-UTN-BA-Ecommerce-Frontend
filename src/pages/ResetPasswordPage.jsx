@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 import { toast, ToastContainer } from "react-toastify"; // Importar Toastify
 import "react-toastify/dist/ReactToastify.css"; // Importar estilos de Toastify
 import "../styles/ResetPasswordPage.css";
@@ -45,8 +45,8 @@ const ResetPasswordPage = () => {
     setIsSubmitting(true);
 
     try {
-      await axios.post(
-        `http://localhost:5000/api/auth/reset-password/${reset_token}`,
+      await axiosInstance.post(
+        `/api/auth/reset-password/${reset_token}`,
         { password }
       );
 

@@ -63,14 +63,14 @@ const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
       return;
     }
 
-    toast.info("Procesando compra...", { autoClose: 2000 });
+    toast.info("Procesando compra...", { autoClose: 2000, position: "bottom-right", theme: "colored", });
 
     try {
       // Simula una carga de 2 segundos
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Aquí se muestra el mensaje de éxito cuando la compra es procesada
-      toast.success("¡Compra realizada con éxito!", { autoClose: 5000 });
+      toast.success("¡Compra realizada con éxito!", { autoClose: 5000, position: "bottom-right", theme: "colored", });
 
       // Eliminar todos los productos del carrito
       cartItems.forEach((item) => onRemove(item.id));

@@ -4,7 +4,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Íconos para mostrar/ocultar la contraseña
 import { Link } from "react-router-dom"; // Importar Link para redirigir a la página de registro
-import axios from "axios"; // Importar Axios
+import axiosInstance from "../utils/axiosConfig";
 import { toast } from "react-toastify"; // Importar react-toastify
 
 const SignUpPage = () => {
@@ -22,8 +22,8 @@ const SignUpPage = () => {
     }
     try {
       // Realizar la solicitud al backend para iniciar sesión
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+      const response = await axiosInstance.post(
+        "/api/auth/login",
         {
           email,
           password,

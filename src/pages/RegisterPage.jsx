@@ -3,7 +3,7 @@ import "../styles/RegisterPage.css";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 import { toast, ToastContainer, Slide } from "react-toastify"; // Importar toast
 import "react-toastify/dist/ReactToastify.css"; // Asegúrate de importar el CSS
 
@@ -45,7 +45,7 @@ const RegisterPage = () => {
       // Utilizar toast.promise para mostrar la notificación según el resultado
       toast
         .promise(
-          axios.post("http://localhost:5000/api/auth/register", {
+          axiosInstance.post("/api/auth/register", {
             name,
             lastName,
             dni,

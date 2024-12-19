@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 import "../styles/RecoverPasswordPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer, Slide } from "react-toastify";
@@ -22,7 +22,7 @@ const RecoverPasswordPage = () => {
 
     toast
       .promise(
-        axios.post("http://localhost:5000/api/auth/forgot-password", { email }),
+        axiosInstance.post("/api/auth/forgot-password", { email }),
         {
           pending: "Enviando correo de recuperación...",
           success: "¡Correo enviado con éxito! Revisa tu bandeja de entrada.",

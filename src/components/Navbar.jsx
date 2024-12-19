@@ -10,7 +10,7 @@ import {
   FaBarsStaggered,
 } from "react-icons/fa6";
 import { useGlobalContext } from "../contexts/GlobalContext";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,8 +56,8 @@ const Navbar = () => {
         return;
       }
 
-      const response = await axios.get(
-        `http://localhost:5000/api/products/search?name=${encodeURIComponent(
+      const response = await axiosInstance.get(
+        `/api/products/search?name=${encodeURIComponent(
           searchTerm
         )}`
       );

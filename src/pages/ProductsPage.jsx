@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import "../styles/ProductsPage.css";
 import FilterSection from "../components/FilterSection";
 import ProductsList from "../components/ProductsList";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 
 const ProductsPage = () => {
   const location = useLocation();
@@ -19,7 +19,7 @@ const ProductsPage = () => {
         setLoading(true);
         const response = searchResults
           ? { data: { payload: { products: searchResults } } }
-          : await axios.get("http://localhost:5000/api/products");
+          : await axiosInstance.get("/api/products");
         setProducts(response.data.payload.products);
       } catch (err) {
         setError("Error al cargar los productos.");

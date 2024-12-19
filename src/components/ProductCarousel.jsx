@@ -6,7 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import ProductCard from "./ProductCard";
 import useFetch from "../hooks/useFetch";
 import "../styles/ProductCarousel.css";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 
 const ProductCarousel = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ const ProductCarousel = () => {
     // Solicitar productos al backend usando Axios
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/products");
+        const response = await axiosInstance.get("/api/products");
         setProducts(response.data.payload.products); // Establecer los productos obtenidos
         setLoading(false);
       } catch (err) {

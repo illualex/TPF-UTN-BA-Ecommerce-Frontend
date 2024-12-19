@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 
 export const useAccount = () => {
   const [accountDetails, setAccountDetails] = useState(null);
@@ -13,8 +13,8 @@ export const useAccount = () => {
         if (!token) {
           throw new Error("No se encontró el token de autenticación.");
         }
-        const response = await axios.get(
-          "http://localhost:5000/api/users/profile",
+        const response = await axiosInstance.get(
+          "/api/users/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`, // Agregar el token en el encabezado de la solicitud

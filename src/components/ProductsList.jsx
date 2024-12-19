@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../hooks/useCart";
 import "../styles/ProductsList.css";
-import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 
 const ProductsList = ({ filter, searchResults }) => {
   const [products, setProducts] = useState([]);
@@ -21,8 +21,8 @@ const ProductsList = ({ filter, searchResults }) => {
     } else {
       const fetchProducts = async () => {
         try {
-          const response = await axios.get(
-            "http://localhost:5000/api/products"
+          const response = await axiosInstance.get(
+            "/api/products"
           );
           setProducts(response.data.payload.products);
           setLoading(false);
