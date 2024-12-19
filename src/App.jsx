@@ -20,6 +20,7 @@ import RecoverPasswordPage from "./pages/RecoverPasswordPage";
 import CartPage from "./pages/CartPage";
 import ResetPage from "./pages/ResetPasswordPage";
 import AccountPage from "./pages/AccountPage";
+import VerifiedEmailPage from "./pages/VerifiedEmailPage";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/recover" element={<RecoverPasswordPage />} />
             <Route path="/reset/:reset_token" element={<ResetPage />} />
+            <Route path="/verify/:verificationToken" element={<VerifiedEmailPage />} />
           </Routes>
         </main>
         <Footer />
