@@ -15,6 +15,7 @@ const VerifiedEmailPage = () => {
         await axiosInstance.get(`/api/auth/verify/${verificationToken}`);
         // Si la verificación es exitosa, muestra el mensaje de éxito
       } catch (error) {
+        alert("error: " + error);
         console.error("Error verificando el correo:", error);
         // Redirige en caso de error
         navigate("/error");
