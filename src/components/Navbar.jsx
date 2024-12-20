@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"; // useRef agregado
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 import logo from "../assets/images/logo/titulo3.png";
@@ -14,25 +14,21 @@ import axiosInstance from "../utils/axiosConfig";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para la búsqueda
-  const { getCartItemCount, username, logout } = useGlobalContext(); // Asegúrate de tener los datos del usuario en el contexto
-  const navigate = useNavigate(); // Aquí defines navigate
-  
-  // Referencia para el dropdown del usuario
+  const [searchTerm, setSearchTerm] = useState("");
+  const { getCartItemCount, username, logout } = useGlobalContext();
+  const navigate = useNavigate();
+
   const userMenuRef = useRef(null);
 
-  // Función para cerrar el menú si se hace clic fuera de él
   const handleClickOutside = (e) => {
     if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
-      setIsMenuOpen(false); // Cerrar el dropdown
+      setIsMenuOpen(false);
     }
   };
 
   useEffect(() => {
-    // Añadir el event listener para detectar clics fuera del dropdown
     document.addEventListener("click", handleClickOutside);
 
-    // Limpiar el event listener al desmontar el componente
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -44,9 +40,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/home");  // Redirigir a la página de inicio después de cerrar sesión
+    navigate("/home");
   };
-  
 
   const handleSearch = async () => {
     try {
@@ -57,9 +52,7 @@ const Navbar = () => {
       }
 
       const response = await axiosInstance.get(
-        `/api/products/search?name=${encodeURIComponent(
-          searchTerm
-        )}`
+        `/api/products/search?name=${encodeURIComponent(searchTerm)}`
       );
 
       const products = response?.data?.payload?.products || [];
@@ -111,7 +104,10 @@ const Navbar = () => {
 
             {username ? (
               <div className="user-menu" ref={userMenuRef}>
-                <button className="btn-user" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button
+                  className="btn-user"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
                   <FaUserLarge />
                   &nbsp;{username}
                 </button>

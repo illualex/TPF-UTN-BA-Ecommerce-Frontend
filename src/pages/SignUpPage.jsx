@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/SignUpPage.css";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Íconos para mostrar/ocultar la contraseña
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axiosInstance from "../utils/axiosConfig";
 import { toast } from "react-toastify";
@@ -25,33 +25,29 @@ const SignUpPage = () => {
     }
 
     try {
-      // Realizar la solicitud al backend para iniciar sesión
       const response = await axiosInstance.post("/api/auth/login", {
         email,
         password,
       });
 
-      // Asumir que el backend devuelve un token al iniciar sesión correctamente
       const token = response.data.payload.token;
       const user = response.data.payload.user;
 
       if (token) {
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
-        login(user); // Actualizar el estado de login en el contexto
+        login(user);
 
-        // Mostrar el mensaje de éxito y redirigir después de 2 segundos
         toast.success("Inicio de sesión exitoso.", {
           position: "bottom-right",
-          autoClose: 2000,
+          autoClose: 2500,
         });
 
         setTimeout(() => {
-          navigate("/home"); // Redirigir a la página de inicio
-        }, 2000); // Esperar 2 segundos antes de redirigir
+          navigate("/home");
+        }, 2000);
       }
     } catch (err) {
-      // Manejo de errores, como usuario no encontrado o contraseña incorrecta
       toast.error("Error al iniciar sesión. Verifica tus credenciales.", {
         position: "bottom-right",
         theme: "colored",
@@ -103,7 +99,6 @@ const SignUpPage = () => {
           </button>
         </form>
 
-        {/* Enlace para redirigir al usuario a la página de registro */}
         <div className="sign-up-links">
           <p>
             ¿No tienes cuenta? <Link to="/register">Registrarse aquí</Link>

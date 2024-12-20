@@ -18,7 +18,7 @@ const useCartForm = (onSubmit) => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Esto es suficiente
+    event.preventDefault();
 
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {

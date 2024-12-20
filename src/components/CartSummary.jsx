@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Hook para redirigir
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useCartForm from "../hooks/useCartForm";
-import { useCart } from "../hooks/useCart"; // Hook para manipular el carrito
-import { useGlobalContext } from "../contexts/GlobalContext"; // Para obtener el usuario logueado
-import LoginReminderPopup from "../components/LoginReminderPopup"; // Popup de recordatorio de login
+import { useCart } from "../hooks/useCart";
+import { useGlobalContext } from "../contexts/GlobalContext";
+import LoginReminderPopup from "../components/LoginReminderPopup";
 import "../styles/CartSummary.css";
 import envioOca from "../assets/images/icons/envio-oca.png";
 import envioArgentino from "../assets/images/icons/envio-argentino.png";
@@ -13,8 +13,8 @@ import envioExpress from "../assets/images/icons/envio-express.png";
 
 const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
   const navigate = useNavigate();
-  const { clearCart } = useCart(); // Hook para limpiar el carrito
-  const { username } = useGlobalContext(); // Obtener el usuario logueado
+  const { clearCart } = useCart();
+  const { username } = useGlobalContext();
 
   const {
     postalCode,
@@ -46,7 +46,7 @@ const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
   };
 
   const handleFinalizarCompra = async (event) => {
-    event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+    event.preventDefault();
 
     if (!cartItems.length) {
       toast.error("El carrito está vacío.");
@@ -54,28 +54,35 @@ const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
     }
 
     if (!postalCode || !shipping || !payment) {
-      toast.error("Por favor complete todos los campos.", {position: "bottom-right", theme: "colored", });
+      toast.error("Por favor complete todos los campos.", {
+        position: "bottom-right",
+        theme: "colored",
+      });
       return;
     }
 
     if (!username) {
-      setIsPopupOpen(true); // Muestra el popup si el usuario no está logueado
+      setIsPopupOpen(true);
       return;
     }
 
-    toast.info("Procesando compra...", { autoClose: 2000, position: "bottom-right", theme: "colored", });
+    toast.info("Procesando compra...", {
+      autoClose: 2000,
+      position: "bottom-right",
+      theme: "colored",
+    });
 
     try {
-      // Simula una carga de 2 segundos
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // Aquí se muestra el mensaje de éxito cuando la compra es procesada
-      toast.success("¡Compra realizada con éxito!", { autoClose: 3000, position: "bottom-right", theme: "colored", });
+      toast.success("¡Compra realizada con éxito!", {
+        autoClose: 3000,
+        position: "bottom-right",
+        theme: "colored",
+      });
 
-      // Eliminar todos los productos del carrito
       cartItems.forEach((item) => onRemove(item.id));
 
-      // Redirigir a la página de productos después de 5 segundos
       setTimeout(() => {
         navigate("/products");
       }, 2000);
@@ -86,7 +93,7 @@ const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
 
   const handleLoginRedirect = () => {
     setIsPopupOpen(false);
-    navigate("/signup"); // Redirige a la página de login/registro
+    navigate("/signup");
   };
 
   return (
@@ -258,7 +265,6 @@ const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
         <button type="submit">Finalizar Compra</button>
       </form>
 
-      {/* Popup de recordatorio de login */}
       <LoginReminderPopup
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}

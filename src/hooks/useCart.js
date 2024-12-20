@@ -42,8 +42,8 @@ export const useCart = () => {
   };
 
   const clearCart = () => {
-    setCartItems([]); // Limpia el estado del carrito
-    localStorage.removeItem("cartItems"); // Limpia localStorage
+    setCartItems([]);
+    localStorage.removeItem("cartItems");
   };
 
   const getCartItemCount = () => {

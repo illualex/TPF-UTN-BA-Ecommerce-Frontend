@@ -9,18 +9,15 @@ export const useAccount = () => {
   useEffect(() => {
     const fetchAccountDetails = async () => {
       try {
-        const token = localStorage.getItem("token"); // Obtener el token del almacenamiento local
+        const token = localStorage.getItem("token");
         if (!token) {
           throw new Error("No se encontró el token de autenticación.");
         }
-        const response = await axiosInstance.get(
-          "/api/users/profile",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // Agregar el token en el encabezado de la solicitud
-            },
-          }
-        );
+        const response = await axiosInstance.get("/api/users/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         setAccountDetails(response.data.payload.user);
       } catch (err) {

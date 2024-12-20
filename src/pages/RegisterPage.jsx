@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import axiosInstance from "../utils/axiosConfig";
-import { toast, ToastContainer, Slide } from "react-toastify"; // Importar toast
-import "react-toastify/dist/ReactToastify.css"; // Asegúrate de importar el CSS
+import { toast, ToastContainer, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -42,7 +42,6 @@ const RegisterPage = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Utilizar toast.promise para mostrar la notificación según el resultado
       toast
         .promise(
           axiosInstance.post("/api/auth/register", {
@@ -63,11 +62,10 @@ const RegisterPage = () => {
         .then(() => {
           setTimeout(() => {
             navigate("/signup");
-          }, 5000); // Retraso de 2 segundos
+          }, 5000);
         })
         .catch((err) => {
           console.error(err);
-          // Si se produce un error, el toast de error ya se maneja con la promesa
         });
     }
   };
@@ -85,7 +83,6 @@ const RegisterPage = () => {
                 name="name"
                 value={name}
                 onChange={(e) => {
-                  // Permite solo letras (mayúsculas y minúsculas), acentos, ñ y espacio
                   setName(
                     e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, "")
                   );
@@ -103,7 +100,6 @@ const RegisterPage = () => {
                 name="lastName"
                 value={lastName}
                 onChange={(e) => {
-                  // Permite solo letras (mayúsculas y minúsculas), acentos, ñ y espacio
                   setLastName(
                     e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, "")
                   );
@@ -123,7 +119,6 @@ const RegisterPage = () => {
                 name="dni"
                 value={dni}
                 onChange={(e) => {
-                  // Permite solo números
                   setDni(e.target.value.replace(/[^0-9]/g, ""));
                 }}
               />
@@ -139,7 +134,6 @@ const RegisterPage = () => {
                 name="phone"
                 value={phone}
                 onChange={(e) => {
-                  // Permite solo números
                   setPhone(e.target.value.replace(/[^0-9]/g, ""));
                 }}
               />

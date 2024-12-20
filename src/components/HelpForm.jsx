@@ -1,8 +1,8 @@
 import React from "react";
 import useHelpForm from "../hooks/useHelpForm";
 import "../styles/HelpForm.css";
-import { ToastContainer } from "react-toastify"; // Importa ToastContainer
-import "react-toastify/dist/ReactToastify.css"; // Asegúrate de importar los estilos de Toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HelpForm = ({ onSuccess }) => {
   const {
@@ -86,7 +86,6 @@ const HelpForm = ({ onSuccess }) => {
         <button type="submit">Enviar</button>
       </form>
 
-      {/* Contenedor de las notificaciones */}
       <ToastContainer
         position="bottom-center"
         autoClose={5000}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/Footer.css";
 import logo from "../assets/images/logo/titulo1.png";
 import axiosInstance from "../utils/axiosConfig";
-import { toast, Slide } from "react-toastify"; // Ya no es necesario importar ToastContainer aquí
+import { toast, Slide } from "react-toastify";
 
 const Footer = () => {
   const [email, setEmail] = useState("");

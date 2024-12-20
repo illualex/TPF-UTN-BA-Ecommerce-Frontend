@@ -14,11 +14,10 @@ const ProductCarousel = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Solicitar productos al backend usando Axios
     const fetchProducts = async () => {
       try {
         const response = await axiosInstance.get("/api/products");
-        setProducts(response.data.payload.products); // Establecer los productos obtenidos
+        setProducts(response.data.payload.products);
         setLoading(false);
       } catch (err) {
         setError("Error al cargar los productos.");

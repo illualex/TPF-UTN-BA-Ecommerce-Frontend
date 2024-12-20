@@ -1,6 +1,6 @@
 import React from "react";
-import { useAccount } from "../hooks/useAccount"; // Importación nombrada
-import "../styles/AccountPage.css"; // Importa el archivo CSS
+import { useAccount } from "../hooks/useAccount";
+import "../styles/AccountPage.css";
 
 const AccountPage = () => {
   const { accountDetails, loading, error } = useAccount();

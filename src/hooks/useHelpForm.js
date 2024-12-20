@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { toast } from "react-toastify"; // Importa toast
+import { toast } from "react-toastify";
 
 const useHelpForm = (onSuccess) => {
   const [formData, setFormData] = useState({
@@ -56,7 +56,7 @@ const useHelpForm = (onSuccess) => {
         draggable: true,
         theme: "colored",
       });
-      onSuccess(); // Llamar a onSuccess después de mostrar el mensaje
+      onSuccess();
     } else {
       setErrors(newErrors);
     }

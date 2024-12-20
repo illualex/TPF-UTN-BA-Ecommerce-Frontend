@@ -2,24 +2,22 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import axiosInstance from "../utils/axiosConfig";
-import { toast } from "react-toastify"; // Importar toast desde react-toastify
+import { toast } from "react-toastify";
 import "../styles/ResetPasswordPage.css";
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para controlar envíos duplicados
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { reset_token } = useParams();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Evitar doble envío
     if (isSubmitting) return;
 
-    // Verificar que los campos no estén vacíos
     if (!password || !confirmPassword) {
       toast.error("Por favor, completa todos los campos.", {
         position: "top-center",
@@ -28,7 +26,6 @@ const ResetPasswordPage = () => {
       return;
     }
 
-    // Verificar que las contraseñas coincidan
     if (password !== confirmPassword) {
       toast.error(
         "Las contraseñas no coinciden. Por favor verifica e intenta nuevamente.",
@@ -40,7 +37,6 @@ const ResetPasswordPage = () => {
       return;
     }
 
-    // Bloquear el botón durante el envío
     setIsSubmitting(true);
 
     try {
@@ -51,8 +47,8 @@ const ResetPasswordPage = () => {
       toast.success("¡Contraseña actualizada con éxito!", {
         position: "top-center",
         theme: "colored",
-        autoClose: 3000, // Duración de 3 segundos
-        onClose: () => navigate("/signup"), // Redirigir después de cerrar el toast
+        autoClose: 3000,
+        onClose: () => navigate("/signup"),
       });
     } catch (err) {
       toast.error(
@@ -63,7 +59,6 @@ const ResetPasswordPage = () => {
         }
       );
     } finally {
-      // Rehabilitar el botón después del envío
       setIsSubmitting(false);
     }
   };
@@ -124,7 +119,7 @@ const ResetPasswordPage = () => {
           <button
             className="update-password-btn"
             type="submit"
-            disabled={isSubmitting} // Deshabilitar el botón mientras se envía
+            disabled={isSubmitting}
           >
             {isSubmitting ? "Actualizando..." : "Actualizar Contraseña"}
           </button>

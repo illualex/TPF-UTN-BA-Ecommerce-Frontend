@@ -8,8 +8,8 @@ import axiosInstance from "../utils/axiosConfig";
 const ProductsPage = () => {
   const location = useLocation();
   const searchResults = location.state?.searchResults || null;
-  const [filter, setFilter] = useState([]); // Guarda los filtros seleccionados
-  const [products, setProducts] = useState([]); // Productos iniciales o de búsqueda
+  const [filter, setFilter] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -32,7 +32,7 @@ const ProductsPage = () => {
   }, [searchResults]);
 
   const handleFilterChange = (newFilter) => {
-    setFilter(newFilter); // Actualiza el estado del filtro
+    setFilter(newFilter);
   };
 
   return (

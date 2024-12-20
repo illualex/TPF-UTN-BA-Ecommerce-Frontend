@@ -7,29 +7,24 @@ import "react-toastify/dist/ReactToastify.css";
 
 const RecoverPasswordPage = () => {
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(""); // Estado para el error del email
+  const [emailError, setEmailError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setEmailError(""); // Limpiar el error del correo antes de hacer una nueva validación
+    setEmailError("");
 
     if (!email) {
-      // Si el correo está vacío, mostramos el error
       setEmailError("El correo electrónico es requerido");
       return;
     }
 
     toast
-      .promise(
-        axiosInstance.post("/api/auth/forgot-password", { email }),
-        {
-          pending: "Enviando correo de recuperación...",
-          success: "¡Correo enviado con éxito! Revisa tu bandeja de entrada.",
-        }
-      )
+      .promise(axiosInstance.post("/api/auth/forgot-password", { email }), {
+        pending: "Enviando correo de recuperación...",
+        success: "¡Correo enviado con éxito! Revisa tu bandeja de entrada.",
+      })
       .then((response) => {
-        // Redirigir después de enviar el correo exitosamente
         setTimeout(() => {
           navigate("/signup");
         }, 4800);
@@ -39,13 +34,16 @@ const RecoverPasswordPage = () => {
           const { message } = err.response.data;
 
           if (message === "USER_NOT_FOUND") {
-            // Mostrar un mensaje amigable si el correo no está registrado
-            toast.error("El correo no está registrado en nuestra base de datos.");
+            toast.error(
+              "El correo no está registrado en nuestra base de datos."
+            );
           } else {
             toast.error("Ocurrió un error inesperado. Inténtalo nuevamente.");
           }
         } else if (err.request) {
-          toast.error("No se pudo conectar con el servidor. Verifica tu conexión.");
+          toast.error(
+            "No se pudo conectar con el servidor. Verifica tu conexión."
+          );
         } else {
           toast.error("Error al enviar la solicitud.");
         }
@@ -81,7 +79,6 @@ const RecoverPasswordPage = () => {
         </div>
       </div>
 
-      {/* ToastContainer para mostrar las notificaciones */}
       <ToastContainer
         position="top-center"
         autoClose={5000}

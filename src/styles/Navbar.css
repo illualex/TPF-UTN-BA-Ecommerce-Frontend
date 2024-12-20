@@ -163,15 +163,15 @@ svg {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   z-index: 1;
   min-width: 10rem;
-  opacity: 0; /* Inicia invisible */
-  visibility: hidden; /* Evita el "espacio" del dropdown cuando está cerrado */
-  transition: opacity 0.3s ease, visibility 0s ease 0.3s; /* Transición suave */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s ease 0.3s;
 }
 
 .user-dropdown.show {
-  opacity: 1; /* Visible cuando la clase .show está activa */
-  visibility: visible; /* Asegura que sea visible */
-  transition: opacity 0.3s ease; /* Transición suave para la visibilidad */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
 }
 
 .user-dropdown button {
@@ -191,7 +191,6 @@ svg {
   border-top: 1px solid #ddd;
 }
 
-/* Opcional: Hover para los botones */
 .user-dropdown button:hover {
   background-color: #171717;
   color: white;

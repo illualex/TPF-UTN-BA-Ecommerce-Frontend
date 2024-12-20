@@ -11,14 +11,13 @@ export const GlobalProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [users, setUsers] = useState(() => {
     const savedUsers = localStorage.getItem("users");
-    return savedUsers ? JSON.parse(savedUsers) : []; // Cargar usuarios del localStorage si existen
+    return savedUsers ? JSON.parse(savedUsers) : [];
   });
 
-  // Recuperar el username de sessionStorage al cargar la página
   useEffect(() => {
     const storedUsername = sessionStorage.getItem("username");
     if (storedUsername) {
-      setUsername(storedUsername); // Establecer el nombre completo del usuario
+      setUsername(storedUsername);
     }
   }, []);
 
@@ -32,20 +31,20 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     if (users.length > 0) {
-      localStorage.setItem("users", JSON.stringify(users)); // Guardar usuarios registrados en localStorage
+      localStorage.setItem("users", JSON.stringify(users));
     }
   }, [users]);
 
   const login = (user) => {
-    const fullName = `${user.name} ${user.lastName}`; // Combinar nombre y apellido
-    sessionStorage.setItem("username", fullName); // Guardar nombre completo en sessionStorage
-    setUsername(fullName); // Actualizar el estado con el nombre completo
+    const fullName = `${user.name} ${user.lastName}`;
+    sessionStorage.setItem("username", fullName);
+    setUsername(fullName);
   };
 
   const logout = (navigate) => {
-    sessionStorage.removeItem("username"); // Eliminar nombre de usuario de sessionStorage
-    setUsername(""); // Limpiar el estado de username
-    if (navigate) navigate("/home"); // Redirige al home después del logout
+    sessionStorage.removeItem("username");
+    setUsername("");
+    if (navigate) navigate("/home");
   };
 
   const addToCart = (product) => {
@@ -97,14 +96,13 @@ export const GlobalProvider = ({ children }) => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
 
-  // Función de registro de usuario
   const register = (username, password) => {
     const newUser = { username, password };
     setUsers((prevUsers) => {
       const updatedUsers = [...prevUsers, newUser];
       return updatedUsers;
     });
-    login({ name: username, lastName: "" }); // Al registrarse, el usuario se loguea automáticamente (sin apellido por defecto)
+    login({ name: username, lastName: "" });
   };
 
   return (
@@ -120,7 +118,7 @@ export const GlobalProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         getCartItemCount,
-        register, // Proveer la función de registro
+        register,
       }}
     >
       {children}
