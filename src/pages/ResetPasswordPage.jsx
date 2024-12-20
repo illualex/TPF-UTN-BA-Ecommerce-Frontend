@@ -22,6 +22,7 @@ const ResetPasswordPage = () => {
       toast.error("Por favor, completa todos los campos.", {
         position: "top-center",
         theme: "colored",
+        autoClose: 1500,
       });
       return;
     }
@@ -32,6 +33,7 @@ const ResetPasswordPage = () => {
         {
           position: "top-center",
           theme: "colored",
+          autoClose: 1500,
         }
       );
       return;
@@ -47,7 +49,7 @@ const ResetPasswordPage = () => {
       toast.success("¡Contraseña actualizada con éxito!", {
         position: "top-center",
         theme: "colored",
-        autoClose: 3000,
+        autoClose: 2000,
         onClose: () => navigate("/signup"),
       });
     } catch (err) {
@@ -56,6 +58,7 @@ const ResetPasswordPage = () => {
         {
           position: "top-center",
           theme: "colored",
+          autoClose: 1500,
         }
       );
     } finally {
