@@ -51,6 +51,7 @@ const ProductCarousel = () => {
         {products.map((product) => (
           <SwiperSlide key={product.id}>
             <ProductCard
+              id={product.id}
               image={product.image}
               title={product.name}
               price={product.price}
