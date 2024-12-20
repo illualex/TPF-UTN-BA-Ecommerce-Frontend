@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Footer.css";
 import logo from "../assets/images/logo/titulo1.png";
 import axiosInstance from "../utils/axiosConfig";
@@ -87,22 +88,22 @@ const Footer = () => {
           <h2>Enlaces de Ayuda Rápida</h2>
           <ul>
             <li>
-              <a href="#">Información de Nosotros</a>
+              <a href="/help">Información de Nosotros</a>
             </li>
             <li>
-              <a href="#">Cómo Realizar un Pedido</a>
+              <a href="/help">Cómo Realizar un Pedido</a>
             </li>
             <li>
-              <a href="#">Formas de Pago</a>
+              <a href="/help">Formas de Pago</a>
             </li>
             <li>
-              <a href="#">Garantía / Cambios / Devoluciones</a>
+              <a href="/help">Garantía / Cambios / Devoluciones</a>
             </li>
             <li>
-              <a href="#">Formas de Envío</a>
+              <a href="/help">Formas de Envío</a>
             </li>
             <li>
-              <a href="#">Cómo Seguir un Envío</a>
+              <a href="/help">Cómo Seguir un Envío</a>
             </li>
           </ul>
         </div>
