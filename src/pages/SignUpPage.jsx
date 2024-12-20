@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "../styles/SignUpPage.css"; // Asegúrate de que el CSS esté importado
+import "../styles/SignUpPage.css";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Íconos para mostrar/ocultar la contraseña
-import { Link } from "react-router-dom"; // Importar Link para redirigir a la página de registro
+import { Link } from "react-router-dom";
 import axiosInstance from "../utils/axiosConfig";
-import { toast } from "react-toastify"; // Importar react-toastify
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -17,18 +17,18 @@ const SignUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      toast.error("Por favor ingresa todos los campos"); // Usando toast en lugar de alert
+      toast.error("Por favor, ingresa todos los campos.", {
+        position: "bottom-right",
+      });
       return;
     }
+
     try {
       // Realizar la solicitud al backend para iniciar sesión
-      const response = await axiosInstance.post(
-        "/api/auth/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axiosInstance.post("/api/auth/login", {
+        email,
+        password,
+      });
 
       // Asumir que el backend devuelve un token al iniciar sesión correctamente
       const token = response.data.payload.token;
@@ -36,14 +36,18 @@ const SignUpPage = () => {
 
       if (token) {
         localStorage.setItem("user", JSON.stringify(user));
-        // Guardar el token en localStorage o en el contexto global si es necesario
         localStorage.setItem("token", token);
-        login(user); // Puedes actualizar el estado de login en el contexto si es necesario
+        login(user); // Actualizar el estado de login en el contexto
+        toast.success("Inicio de sesión exitoso.", {
+          position: "bottom-right", theme: "colored",
+        });
         navigate("/home"); // Redirigir a la página de inicio
       }
     } catch (err) {
       // Manejo de errores, como usuario no encontrado o contraseña incorrecta
-      toast.error("Error al iniciar sesión. Verifica tus credenciales."); // Usando toast en lugar de alert
+      toast.error("Error al iniciar sesión. Verifica tus credenciales.", {
+        position: "bottom-right", theme: "colored",
+      });
       console.error(err);
     }
   };

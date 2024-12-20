@@ -54,7 +54,7 @@ const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
     }
 
     if (!postalCode || !shipping || !payment) {
-      toast.error("Por favor complete todos los campos.");
+      toast.error("Por favor complete todos los campos.", {position: "bottom-right", theme: "colored", });
       return;
     }
 
@@ -70,7 +70,7 @@ const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Aquí se muestra el mensaje de éxito cuando la compra es procesada
-      toast.success("¡Compra realizada con éxito!", { autoClose: 5000, position: "bottom-right", theme: "colored", });
+      toast.success("¡Compra realizada con éxito!", { autoClose: 3000, position: "bottom-right", theme: "colored", });
 
       // Eliminar todos los productos del carrito
       cartItems.forEach((item) => onRemove(item.id));
@@ -78,7 +78,7 @@ const CartSummary = ({ cartItems, onSubmit, onRemove }) => {
       // Redirigir a la página de productos después de 5 segundos
       setTimeout(() => {
         navigate("/products");
-      }, 5000);
+      }, 2000);
     } catch (error) {
       toast.error("Ocurrió un error. Intenta nuevamente.");
     }

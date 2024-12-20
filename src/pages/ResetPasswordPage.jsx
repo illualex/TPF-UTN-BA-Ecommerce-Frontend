@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import axiosInstance from "../utils/axiosConfig";
-import { toast, ToastContainer } from "react-toastify"; // Importar Toastify
-import "react-toastify/dist/ReactToastify.css"; // Importar estilos de Toastify
+import { toast } from "react-toastify"; // Importar toast desde react-toastify
 import "../styles/ResetPasswordPage.css";
 
 const ResetPasswordPage = () => {
@@ -23,7 +22,7 @@ const ResetPasswordPage = () => {
     // Verificar que los campos no estén vacíos
     if (!password || !confirmPassword) {
       toast.error("Por favor, completa todos los campos.", {
-        position: "bottom-center",
+        position: "top-center",
         theme: "colored",
       });
       return;
@@ -34,7 +33,7 @@ const ResetPasswordPage = () => {
       toast.error(
         "Las contraseñas no coinciden. Por favor verifica e intenta nuevamente.",
         {
-          position: "bottom-center",
+          position: "top-center",
           theme: "colored",
         }
       );
@@ -45,13 +44,12 @@ const ResetPasswordPage = () => {
     setIsSubmitting(true);
 
     try {
-      await axiosInstance.post(
-        `/api/auth/reset-password/${reset_token}`,
-        { password }
-      );
+      await axiosInstance.post(`/api/auth/reset-password/${reset_token}`, {
+        password,
+      });
 
       toast.success("¡Contraseña actualizada con éxito!", {
-        position: "bottom-center",
+        position: "top-center",
         theme: "colored",
         autoClose: 3000, // Duración de 3 segundos
         onClose: () => navigate("/signup"), // Redirigir después de cerrar el toast
@@ -60,7 +58,7 @@ const ResetPasswordPage = () => {
       toast.error(
         err.response?.data?.message || "Error al restablecer contraseña.",
         {
-          position: "bottom-center",
+          position: "top-center",
           theme: "colored",
         }
       );
@@ -132,8 +130,6 @@ const ResetPasswordPage = () => {
           </button>
         </form>
       </div>
-      {/* ToastContainer para mostrar notificaciones */}
-      <ToastContainer position="bottom-center" theme="colored" />
     </main>
   );
 };
