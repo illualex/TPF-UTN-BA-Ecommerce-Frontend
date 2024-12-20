@@ -19,6 +19,7 @@ const SignUpPage = () => {
     if (!email || !password) {
       toast.error("Por favor, ingresa todos los campos.", {
         position: "bottom-right",
+        theme: "colored",
       });
       return;
     }
@@ -38,15 +39,22 @@ const SignUpPage = () => {
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
         login(user); // Actualizar el estado de login en el contexto
+
+        // Mostrar el mensaje de éxito y redirigir después de 2 segundos
         toast.success("Inicio de sesión exitoso.", {
-          position: "bottom-right", theme: "colored",
+          position: "bottom-right",
+          autoClose: 2000,
         });
-        navigate("/home"); // Redirigir a la página de inicio
+
+        setTimeout(() => {
+          navigate("/home"); // Redirigir a la página de inicio
+        }, 2000); // Esperar 2 segundos antes de redirigir
       }
     } catch (err) {
       // Manejo de errores, como usuario no encontrado o contraseña incorrecta
       toast.error("Error al iniciar sesión. Verifica tus credenciales.", {
-        position: "bottom-right", theme: "colored",
+        position: "bottom-right",
+        theme: "colored",
       });
       console.error(err);
     }
