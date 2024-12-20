@@ -13,7 +13,8 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import axiosInstance from "../utils/axiosConfig";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false); 
   const [searchTerm, setSearchTerm] = useState("");
   const { getCartItemCount, username, logout } = useGlobalContext();
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Navbar = () => {
 
   const handleClickOutside = (e) => {
     if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
-      setIsMenuOpen(false);
+      setIsUserMenuOpen(false);
     }
   };
 
@@ -33,10 +34,6 @@ const Navbar = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const handleLogout = () => {
     logout();
@@ -94,7 +91,7 @@ const Navbar = () => {
             </button>
           </div>
 
-          <div className={`navbar-icons ${isMenuOpen ? "active" : ""}`}>
+          <div className="navbar-icons">
             <Link to="/cart" className="btn-cart">
               <FaCartPlus />
               {getCartItemCount() > 0 && (
@@ -106,12 +103,12 @@ const Navbar = () => {
               <div className="user-menu" ref={userMenuRef}>
                 <button
                   className="btn-user"
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                 >
                   <FaUserLarge />
                   &nbsp;{username}
                 </button>
-                <div className={`user-dropdown ${isMenuOpen ? "show" : ""}`}>
+                <div className={`user-dropdown ${isUserMenuOpen ? "show" : ""}`}>
                   <Link to="/account" className="user-dropdown-link">
                     <button>Mi Cuenta</button>
                   </Link>
@@ -127,11 +124,14 @@ const Navbar = () => {
           </div>
         </div>
 
-        <button className="menu-toggle" onClick={toggleMenu}>
-          {isMenuOpen ? <FaBarsStaggered /> : <FaBars />}
+        <button
+          className="menu-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <FaBarsStaggered /> : <FaBars />}
         </button>
 
-        <div className={`navbar-bottom ${isMenuOpen ? "active" : ""}`}>
+        <div className={`navbar-bottom ${isMobileMenuOpen ? "active" : ""}`}>
           <Link to="/home" className="navbar-link">
             Inicio
           </Link>

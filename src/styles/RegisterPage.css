@@ -205,9 +205,8 @@
     right: -13%;
   }
 
-  .form-row input {
-    flex: none;
-    width: 100%;
+  .form-row {
+    flex-direction: column;
   }
 
   .register-links {
