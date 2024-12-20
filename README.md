@@ -16,5 +16,5 @@ Dependencias nuevas utilizadas:
 - react toastify
 
 Dificultades y Aprendizaje:
-- No se tuvo dificultades en el la conexión con el Back.
-- Pequeños errores Aleatorios en react toastify, a veces se muestran y a veces no, no encontré un arreglo.
+- No se tuvo dificultades en la conexión con el Back.
+- Pequeños errores aleatorios en react toastify, a veces se muestran y a veces no.
